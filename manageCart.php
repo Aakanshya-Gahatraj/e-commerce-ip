@@ -7,14 +7,9 @@ if($_SERVER["REQUEST_METHOD"]=="GET")
 {
     if(isset($_GET['id']))
     {
-        // echo var_dump($_GET['id']);
         $id=$_GET['id'];
         $result= $con->query("SELECT * FROM product where id=$id") or die($con->error);
         $row=$result->fetch_array();
-        
-        // echo var_dump($row);
-        echo "hello";
-        echo "<br><br>";
 
         if(isset($_SESSION['cart'])){
             $cardItems=array_column($_SESSION['cart'],'Item_Name');

@@ -16,11 +16,12 @@ require("header.php");
 <div class="body-content outer-top-xs">
 	<div class="container">
 		<div class="row ">
-			<div class="shopping-cart">
+			<div x-data='{cart: <?php echo json_encode($_SESSION["cart"])?>}' x-init="console.log('hello',cart)" class="shopping-cart">
 				<div class="shopping-cart-table ">
 
 					<div class="table-responsive">
-						<table class="table">
+						
+						<table  class="table">
 							<thead>
 								<tr>
 									
@@ -29,15 +30,14 @@ require("header.php");
 									<th class="cart-product-name item">Price (per)</th>
 									<th class="cart-qty item">Quantity</th>
 									<th class="cart-romove item ">Remove</th>
+									<th class="cart-romove item ">Total</th>
 								</tr>
 							</thead><!-- /thead -->
 							
 						<tbody>
 							<?php 
-								$total=0;
 								if(isset($_SESSION['cart'])){
 									foreach($_SESSION['cart'] as $key => $value){
-										$total+=$value['Item_price'];
 										echo"
 										<tr>											
 											<td class='cart-image text-center'>
@@ -46,18 +46,19 @@ require("header.php");
 												</a>
 											</td>
 											<td class='text-center'>$value[Item_Name]</td>
-											<td class='text-center'>$value[Item_price]</td>
-											<td  class='text-center'><input class='text-center' type='number' value='$value[Item_qty]' min='1' max='10'></td>
+											<td class='text-center'>$value[Item_price]<input type='hidden' class='iprice' value='$value[Item_price]'></td>
+											<td  class='text-center'  ><input x-text='cart[$key].Item_qty' class='text-center iqty'  type='number' x-model='cart[$key].Item_qty' min='1' max='10'></td>
 											<td>
 												<form class='text-center' action='manageCart.php' method='POST' >
 													<button class='btn btn-danger' name='remove'>Remove</button>
 													<input type='hidden' name='Item_Name' value='$value[Item_Name]'>
 												</form>
 											</td>
+											<td class='itotal text-center'x-text= 'cart[$key].Item_qty*cart[$key].Item_price'></td>
 										</tr>";
 									}
 								}
-								$_SESSION['total']=$total;
+
 							?>
 							</tbody>
 
@@ -84,7 +85,7 @@ require("header.php");
 							<tr>
 								<th>
 									<div class="cart-grand-total">
-										Grand Total--><span class="inner-left-md text-left"><?php echo $total?></span>
+										Grand Total--><span class="inner-left-md text-left" x-text="cart.reduce((a,e)=> a+(e.Item_price*  e.Item_qty),0)" x-init="console.log(cart)"></span>
 									</div>
 								</th>
 							</tr>
@@ -93,16 +94,31 @@ require("header.php");
 								<tr>
 									<td>
 										<div class="cart-checkout-btn pull-right">
-											<button type="submit" class="btn btn-primary checkout-btn ">Proceed to checkout</button>
+										<!-- <a href="checkout.php"> -->
+											<button @click="setCookie('cart', JSON.stringify(cart), 1); window.location.href='checkout.php'" type="submit" class="btn btn-primary checkout-btn ">Proceed to checkout</button>
+											<!-- </a> -->
 										</div>
 									</td>
 								</tr>
 						</tbody><!-- /tbody -->
 					</table><!-- /table -->
-				</div><!-- /.cart-shopping-total -->			</div><!-- /.shopping-cart -->
-						</div> <!-- /.row -->
-						
-<?php  
+				</div><!-- /.cart-shopping-total -->			
+			</div><!-- /.shopping-cart -->
+		</div> <!-- /.row -->
+		<script>
+			function setCookie(cname, cvalue, exdays) {
+				const d = new Date();
+				d.setTime(d.getTime() + (exdays*24*60*60*1000));
+				let expires = "expires="+ d.toUTCString();
+				document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+				console.log(cvalue);
+			}
+		</script>
+<?php 
+// if(($_COOKIE['total'])!=NULL){
+// 	echo var_dump($_COOKIE['total']);
+// 	$_SESSION['total']=$_COOKIE['total'];
+// } 
 require("footer.php");?>
 </body>
 </html>

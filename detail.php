@@ -91,24 +91,9 @@ $row=$result->fetch_array();
 
 						<div class="quantity-container info-container">
 							<div class="row">
-								<div class="qty">
-									<span class="label">Qty :</span>
-								</div>
-								
-								<div class="qty-count">
-									<div class="cart-quantity">
-										<div class="quant-input">
-											<div class="arrows">
-												<div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-												<div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-											</div>
-											<input type="text" value="1">
-										</div>
-									</div>
-								</div>
 
 								<div class="add-btn" name="cart">
-									<a href="shopping-cart.php" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+								<button class="btn btn-primary" id="<?php echo $row['id'];?>" onclick="sendToCart(this.id)"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
 								</div>
 							</div><!-- /.row -->
 						</div><!-- /.quantity-container -->
@@ -121,6 +106,10 @@ $row=$result->fetch_array();
 	</div><!-- /.container -->
 </div><!-- /.top -->
 
+<script>
+	function sendToCart(id){
+	location.href = "manageCart.php?id="+id;}
+</script>
 
 <?php require("footer.php");?>
 </body>
