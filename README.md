@@ -13,4 +13,4 @@ g) Admin login/logout and panel for CRUD fuctions
 
 ## Output
 
-![](images/eCommerce.png)
+![](assets/eCommerce.png)
