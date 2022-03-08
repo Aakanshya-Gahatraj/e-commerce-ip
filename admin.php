@@ -33,8 +33,7 @@ unset($_SESSION['update']);
         <div class="header-top-inner">
           <div class="cnt-account">
             <ul class="list-unstyled">
-              <li class="myaccount"><a href="#"><span>My Account</span></a></li>
-              <li class="login"><a href="login.php"><span>Logout</span></a></li>
+              <li class="login" ><a href="login.php"><span><strong>Logout</strong></span></a></li>
             </ul>
           </div>
           <div class="clearfix"></div>

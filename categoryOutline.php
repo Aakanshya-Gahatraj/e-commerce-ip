@@ -29,36 +29,6 @@ require("connection.inc.php");
             <?php
             require("sideNavigation.php");
             ?>
-            <div class="sidebar-module-container">
-              <div class="sidebar-filter">
-                <!-- ============================================== PRODUCT TAGS ============================================== -->
-                <div class="sidebar-widget product-tag outer-top-vs">
-                  <h3 class="section-title">Product tags</h3>
-                  <div class="sidebar-widget-body outer-top-xs">
-                    <div class="tag-list">
-                      <a class="item" title="Phone" href="category.html"
-                        >T-shirt</a
-                      >
-                      <a class="item active" title="Vest" href="category.html"
-                        >Sweaters</a
-                      >
-                      <a class="item" title="Smartphone" href="category.html"
-                        >Sandals</a
-                      >
-                      <a class="item" title="Furniture" href="category.html"
-                        >Dresses</a
-                      >
-                     
-                    </div>
-                    <!-- /.tag-list -->
-                  </div>
-                  <!-- /.sidebar-widget-body -->
-                </div>
-                <!-- /.sidebar-widget -->
-              </div>
-              <!-- /.sidebar-filter -->
-            </div>
-            <!-- /.sidebar-module-container -->
           </div>
           <!-- /.sidebar -->
 

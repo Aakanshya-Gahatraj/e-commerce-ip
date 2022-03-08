@@ -73,22 +73,6 @@ if(isset($_POST['update'])){
     header('location:admin.php');
 }
 
-// if(isset($_POST['cart'])){
-//     $id=$_GET['edit'];
-//     $update=true;
-//     $result= $con->query("SELECT * FROM product where id=$id") or die($con->error);
-//     if($result->num_rows ==1){
-//         $row=$result->fetch_array();
-//         // echo var_dump($row);
-//         $_SESSION['product_edit']=$row;
-//         $_SESSION['update']=$update;
-//         header('location:form.php');
-
-//     }else{
-//         echo "no such value";
-//     }
-// }
-
 if(isset($_POST['search'])){
     $str=$_POST['string'];
     echo var_dump($str);
