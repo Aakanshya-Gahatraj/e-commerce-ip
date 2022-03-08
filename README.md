@@ -3,8 +3,8 @@
 This project is an e-commerce website developed using the Marazzo template and php. 
 The features enabled in the website are;
 
-a) Searching for a product
-b) Search as per categories (women,men,kids)
+a) Searching for a product  
+b) Search as per categories (women,men,kids)  
 c) Product description page
 d) Add to shopping cart
 e) Checkout form to take user-details
